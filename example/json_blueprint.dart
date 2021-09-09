@@ -1,45 +1,26 @@
-# blue_print
-
-part of `queen` packages
-
-validate JSON against your own Blueprint 👑🧬
-
-# supported types
-
-- StringF
-- IntF
-- DoubleF
-- NumF
-- BoolF
-- MapF
-- ListF
-
-## example
-
-```dart
 import 'package:json_blueprint/matcher.dart';
 import 'package:json_blueprint/src/matcher.dart';
 
 void main(List<String> arguments) {
-  //* use try/catch blocs to catch the failure message
+  //* use try/catch blocs to catch the faliure message
   try {
-    // simple one felid
+    // simple one feild
     match(
       // the json
       {'name': 'queen'},
       // the blue print
       {'name': StringF()},
-      // * you can use supported Felids only , they are listen in the readme.md file
+      // * you can use supported Feilds only , they are listen in the readme.md file
     );
 
-    // ? validate against lists
+    // ? validate aginst lists
     match(
       {
         'ids': [10, 11, 17]
       },
       {
         'ids': ListF(),
-        // ? or you can determine the list items type
+        // ? or you can detrmine the list items type
         // 'ids' : ListF(IntF()),
       },
     );
@@ -75,5 +56,3 @@ void main(List<String> arguments) {
     print('[👑][blue_print] match result is ❌');
   }
 }
-
-```
