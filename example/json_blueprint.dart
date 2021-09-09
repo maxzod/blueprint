@@ -4,13 +4,49 @@ import 'package:json_blueprint/src/matcher.dart';
 void main(List<String> arguments) {
   //* use try/catch blocs to catch the faliure message
   try {
+    match({
+      'items': {
+        'name': '',
+        'age': '',
+      }
+    }, {
+      'items': MapF({
+        'name': StringF(),
+        'age': StringF(),
+        'foo': StringF(),
+      }),
+    });
     // simple one feild
     match(
       // the json
-      {'name': 'queen'},
+      {
+        'name': 'queen',
+        // 'age': '21',
+        'user': {
+          'role': {
+            'id': -0,
+            'name': 'user',
+          },
+          'id': 1,
+          'name': 'ahmed',
+        }
+      },
       // the blue print
-      {'name': StringF()},
-      // * you can use supported Feilds only , they are listen in the readme.md file
+      {
+        'name': StringF(),
+        // 'age': IntF(),
+        'user': MapF({
+          'role': MapF(
+            {
+              'id': IntF(),
+              'name': StringF(),
+            },
+          ),
+          'name': StringF(),
+          'id': IntF(),
+        }),
+      },
+      // * you can use supported Feilds only , they are listed in the readme.md file
     );
 
     // ? validate aginst lists

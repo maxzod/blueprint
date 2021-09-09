@@ -1,19 +1,16 @@
-abstract class JsonBluePrint {
-  Map<String, BluePrintFeild> get schema;
-  void match();
-}
-
 //* nonfunction-type-aliases
+import 'exceptions.dart';
+
 typedef MapBluePrint = Map<String, BluePrintFeild>;
 
 abstract class BluePrintFeild {
-  void match(Object? value);
+  void match(String key, Object? value);
 }
 
 class _BluePrintFeildT<T> implements BluePrintFeild {
   @override
-  void match(Object? value) {
-    if (value is! T) throw '$value is not a subtype of $T';
+  void match(String key, Object? value) {
+    if (value is! T) throw TypeDoesNotMatch(key: key, value: value, expected: T);
   }
 }
 
@@ -28,17 +25,25 @@ class NumF extends _BluePrintFeildT<num> {}
 class BoolF extends _BluePrintFeildT<num> {}
 
 class MapF extends BluePrintFeild {
-  final MapBluePrint mapBluePrint;
+  final MapBluePrint? mapBluePrint;
 
-  MapF(this.mapBluePrint);
+  MapF([this.mapBluePrint]);
 
   @override
-  void match(Object? value) {
-    if (value is! Map) throw '$value is not suptybe of Map';
-
-    if (mapBluePrint.keys.length != value.keys.length) throw '$value keys are not the same lenght to the mapBluePrint';
-    for (final key in mapBluePrint.keys) {
-      mapBluePrint[key]!.match(value[key]);
+  void match(String key, Object? value) {
+    if (value is! Map) throw TypeDoesNotMatch(key: key, expected: Map);
+    if (mapBluePrint != null) {
+      if (mapBluePrint!.keys.length != value.keys.length) {
+        throw LengthDoesNotMatch(expected: mapBluePrint!.length, key: key, vLength: value.length, value: value);
+      }
+      try {
+        for (final childKey in mapBluePrint!.keys) {
+          mapBluePrint![childKey]!.match('[$childKey]', value[childKey]);
+        }
+      } on TypeDoesNotMatch catch (e) {
+        if (key.isEmpty) rethrow;
+        throw TypeDoesNotMatch(key: '$key' + e.key, value: e.value, expected: e.expected);
+      }
     }
   }
 }
@@ -47,11 +52,11 @@ class ListF extends BluePrintFeild {
   final BluePrintFeild? childBluePrint;
   ListF([this.childBluePrint]);
   @override
-  void match(Object? value) {
-    if (value is! List) throw '$value is not suptybe of List';
+  void match(String key, Object? value) {
+    if (value is! List) throw TypeDoesNotMatch(key: key, expected: List);
     if (childBluePrint != null) {
       for (final item in value) {
-        childBluePrint!.match(item);
+        childBluePrint!.match(key, item);
       }
     }
   }
