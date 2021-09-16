@@ -5,12 +5,12 @@ void main() {
   group(
     'MapF BluePrint',
     () {
-      test('when blueprint is valid Map feild', () {
+      test('when blueprint is valid Map felid', () {
         const json = {'name': {}};
         final result = match(json, {'name': MapF()});
         expect(result, isTrue);
       });
-      test('when **INNER** map blueprint is valid Map feild', () {
+      test('when **INNER** map blueprint is valid Map felid', () {
         const json = {
           'name': {
             'user': {},
@@ -26,7 +26,7 @@ void main() {
         expect(result, isTrue);
       });
 
-      test('when blueprint is **NOT** valid Map feild', () {
+      test('when blueprint is **NOT** valid Map felid', () {
         const json = {'name': 10112017};
         final result = match(json, {'name': MapF()}, throwIfFail: false);
         expect(result, isFalse);

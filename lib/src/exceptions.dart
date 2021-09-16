@@ -32,6 +32,6 @@ class LengthDoesNotMatch extends BluePrintException {
       : super(
           key: key,
           value: value,
-          msg: 'map $key keys lenght is $vLength expected to be $expected',
+          msg: 'map $key keys length is $vLength expected to be $expected',
         );
 }

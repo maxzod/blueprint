@@ -1,8 +1,16 @@
 # blue_print
 
-part of `queen` packages
+part of `queen` packages 👑
 
-validate JSON against your own Blueprint 👑🧬
+Validate JSON Against Your Own Blueprint 👑🧬
+
+# Features
+
+- validate json to match any schema you want 🌟
+- support dart native types 🔍
+- throw or return false as a result 💣
+- tills you which key is a failure and why 💪
+- tested 🧪
 
 # supported types
 
@@ -14,11 +22,10 @@ validate JSON against your own Blueprint 👑🧬
 - MapF
 - ListF
 
-## example
+## example 1
 
 ```dart
-import 'package:json_blueprint/matcher.dart';
-import 'package:json_blueprint/src/matcher.dart';
+import 'package:json_blueprint/json_blueprint.dart';
 
 void main(List<String> arguments) {
   //* use try/catch blocs to catch the failure message
@@ -31,6 +38,23 @@ void main(List<String> arguments) {
       {'name': StringF()},
       // * you can use supported Felids only , they are listen in the readme.md file
     );
+    print('[👑][blue_print] match result is ✅');
+  } catch (e) {
+    print(e);
+    print('[👑][blue_print] match result is ❌');
+  }
+}
+
+```
+
+## example 2
+
+```dart
+import 'package:json_blueprint/json_blueprint.dart';
+
+void main(List<String> arguments) {
+  //* use try/catch blocs to catch the failure message
+  try {
 
     // ? validate against lists
     match(
@@ -43,6 +67,23 @@ void main(List<String> arguments) {
         // 'ids' : ListF(IntF()),
       },
     );
+    print('[👑][blue_print] match result is ✅');
+  } catch (e) {
+    print(e);
+    print('[👑][blue_print] match result is ❌');
+  }
+}
+
+```
+
+## example 3
+
+```dart
+import 'package:json_blueprint/json_blueprint.dart';
+
+void main(List<String> arguments) {
+  //* use try/catch blocs to catch the failure message
+  try {
 
     // * full example
     match(
@@ -58,6 +99,8 @@ void main(List<String> arguments) {
           'created_at': '10-11-17',
         }
       },
+
+      // the blue print
       {
         'name': StringF(),
         'age': IntF(),

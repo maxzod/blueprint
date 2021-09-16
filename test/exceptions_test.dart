@@ -6,7 +6,7 @@ void main() {
     'BluePrint Exceptions Test',
     () {
       test(
-          'when blueprint feild type does not match it will throw TypeDoesNotMatch Exception',
+          'when blueprint felid type does not match it will throw TypeDoesNotMatch Exception',
           () {
         const json = {'isAdmin': 'Foo'};
         expect(

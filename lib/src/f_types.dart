@@ -1,16 +1,16 @@
 //* map blue print
 import 'exceptions.dart';
 
-typedef MapBluePrint = Map<String, BluePrintFeild>;
+typedef MapBluePrint = Map<String, BluePrintFelid>;
 
-// * the matcher api for single feilds
-abstract class BluePrintFeild {
-  const BluePrintFeild();
+// * the matcher api for single felids
+abstract class BluePrintFelid {
+  const BluePrintFelid();
   void match(String key, Object? value);
 }
 
 // * for standard types
-class _BluePrintFeildT<T> implements BluePrintFeild {
+class _BluePrintFelidT<T> implements BluePrintFelid {
   @override
   void match(String key, Object? value) {
     if (value is! T) {
@@ -19,21 +19,21 @@ class _BluePrintFeildT<T> implements BluePrintFeild {
   }
 }
 
-class StringF extends _BluePrintFeildT<String> {}
+class StringF extends _BluePrintFelidT<String> {}
 
-class IntF extends _BluePrintFeildT<int> {}
+class IntF extends _BluePrintFelidT<int> {}
 
-class DoubleF extends _BluePrintFeildT<double> {}
+class DoubleF extends _BluePrintFelidT<double> {}
 
-class NumF extends _BluePrintFeildT<num> {}
+class NumF extends _BluePrintFelidT<num> {}
 
-class BoolF extends _BluePrintFeildT<bool> {}
+class BoolF extends _BluePrintFelidT<bool> {}
 
 //* the Map handler
-class MapF extends BluePrintFeild {
+class MapF extends BluePrintFelid {
   final MapBluePrint? mapBluePrint;
-  // * if you pass the bluePrint for thes Feild the matcher will matche aginst
-  //*  every single feild in the map other wise it will check if its just a Map
+  // * if you pass the bluePrint for this Felid the matcher will matches
+  //*  every single felid in the map other wise it will check if its just a Map
   const MapF([this.mapBluePrint]);
 
   @override
@@ -50,7 +50,7 @@ class MapF extends BluePrintFeild {
             value: value);
       }
 
-      /// * chick aginst keys values
+      /// * chick keys values
       try {
         for (final childKey in mapBluePrint!.keys) {
           mapBluePrint![childKey]!.match('[$childKey]', value[childKey]);
@@ -65,8 +65,8 @@ class MapF extends BluePrintFeild {
   }
 }
 
-class ListF extends BluePrintFeild {
-  final BluePrintFeild? childBluePrint;
+class ListF extends BluePrintFelid {
+  final BluePrintFelid? childBluePrint;
   const ListF([this.childBluePrint]);
   @override
   void match(String key, Object? value) {
