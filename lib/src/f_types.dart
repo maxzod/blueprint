@@ -1,10 +1,11 @@
+//* map blue print
 import 'exceptions.dart';
 
-//* map blue print
 typedef MapBluePrint = Map<String, BluePrintFeild>;
 
 // * the matcher api for single feilds
 abstract class BluePrintFeild {
+  const BluePrintFeild();
   void match(String key, Object? value);
 }
 
@@ -12,7 +13,9 @@ abstract class BluePrintFeild {
 class _BluePrintFeildT<T> implements BluePrintFeild {
   @override
   void match(String key, Object? value) {
-    if (value is! T) throw TypeDoesNotMatch(key: key, value: value, expected: T);
+    if (value is! T) {
+      throw TypeDoesNotMatch(key: key, value: value, expected: T);
+    }
   }
 }
 
@@ -24,14 +27,14 @@ class DoubleF extends _BluePrintFeildT<double> {}
 
 class NumF extends _BluePrintFeildT<num> {}
 
-class BoolF extends _BluePrintFeildT<num> {}
+class BoolF extends _BluePrintFeildT<bool> {}
 
 //* the Map handler
 class MapF extends BluePrintFeild {
   final MapBluePrint? mapBluePrint;
   // * if you pass the bluePrint for thes Feild the matcher will matche aginst
   //*  every single feild in the map other wise it will check if its just a Map
-  MapF([this.mapBluePrint]);
+  const MapF([this.mapBluePrint]);
 
   @override
   void match(String key, Object? value) {
@@ -40,7 +43,11 @@ class MapF extends BluePrintFeild {
     if (mapBluePrint != null) {
       // * insure keys keys length
       if (mapBluePrint!.keys.length != value.keys.length) {
-        throw LengthDoesNotMatch(expected: mapBluePrint!.length, key: key, vLength: value.length, value: value);
+        throw LengthDoesNotMatch(
+            expected: mapBluePrint!.length,
+            key: key,
+            vLength: value.length,
+            value: value);
       }
 
       /// * chick aginst keys values
@@ -51,7 +58,8 @@ class MapF extends BluePrintFeild {
       } on TypeDoesNotMatch catch (e) {
         if (key.isEmpty) rethrow;
         // * append the parent key if exist
-        throw TypeDoesNotMatch(key: '$key' + e.key, value: e.value, expected: e.expected);
+        throw TypeDoesNotMatch(
+            key: key + e.key, value: e.value, expected: e.expected);
       }
     }
   }
@@ -59,7 +67,7 @@ class MapF extends BluePrintFeild {
 
 class ListF extends BluePrintFeild {
   final BluePrintFeild? childBluePrint;
-  ListF([this.childBluePrint]);
+  const ListF([this.childBluePrint]);
   @override
   void match(String key, Object? value) {
     if (value is! List) throw TypeDoesNotMatch(key: key, expected: List);

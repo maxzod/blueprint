@@ -24,7 +24,11 @@ class TypeDoesNotMatch extends BluePrintException {
 }
 
 class LengthDoesNotMatch extends BluePrintException {
-  LengthDoesNotMatch({required String key, Object? value, required int vLength, required int expected})
+  LengthDoesNotMatch(
+      {required String key,
+      Object? value,
+      required int vLength,
+      required int expected})
       : super(
           key: key,
           value: value,
