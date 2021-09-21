@@ -1,6 +1,6 @@
 name: blueprint
 description: Validate JSON Against Your Own Blueprint
-version: 1.0.0
+version: 0.0.1-beta
 homepage: https://www.example.com
 environment:
   sdk: ">=2.13.0 <3.0.0"
