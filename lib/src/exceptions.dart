@@ -1,3 +1,4 @@
+/// exception base class
 class BluePrintException implements Exception {
   final String key;
   final Object? value;
@@ -13,6 +14,7 @@ class BluePrintException implements Exception {
   String toString() => msg;
 }
 
+/// * thrown when a feield does not match the request type
 class TypeDoesNotMatch extends BluePrintException {
   final Type expected;
   TypeDoesNotMatch({required String key, Object? value, required this.expected})

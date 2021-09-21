@@ -5,6 +5,9 @@ part 'imp.dart';
 part 'list.dart';
 part 'map.dart';
 
+/// * match the json with the bluePrint
+/// * return true in case of success
+/// * return false in case of failure
 bool match(
   Map<String, dynamic> json,
   MapBluePrint bluePrint,
@@ -17,6 +20,9 @@ bool match(
   }
 }
 
+/// * match the json with the bluePrint
+/// ? return void in case of success
+/// ! throw `TypeDoesNotMatch` in case of failure
 void matchOrThrow(
   Map<String, dynamic> json,
   MapBluePrint bluePrint,

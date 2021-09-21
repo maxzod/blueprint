@@ -2,30 +2,30 @@
 
 part of 'match.dart';
 
-/// * String
+/// * String || String?
 const StringF = _BluePrintFieldT<String>();
 const StringOrNull = _BluePrintFieldT<String?>();
 
-/// * int
+/// * int || int?
 const IntF = _BluePrintFieldT<int>();
 const IntOrNull = _BluePrintFieldT<int?>();
 
-/// * double
+/// * double || double?
 const DoubleF = _BluePrintFieldT<double>();
 const DoubleOrNull = _BluePrintFieldT<double?>();
 
-/// * num
+/// * num || num?
 const NumF = _BluePrintFieldT<num>();
 const NumOrNull = _BluePrintFieldT<num?>();
 
-/// * bool
+/// * bool || bool?
 const BoolF = _BluePrintFieldT<bool>();
 const BoolOrNull = _BluePrintFieldT<bool?>();
 
-/// * Map
+/// * Map || Map?
 const MapF = _BluePrintFieldT<Map>();
 const MapOrNull = _BluePrintFieldT<Map?>();
 
-/// * List
+/// * List || List?
 const ListF = _BluePrintFieldT<List>();
 const ListOrNull = _BluePrintFieldT<List?>();
