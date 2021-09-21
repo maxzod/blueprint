@@ -10,7 +10,7 @@ bool match(
   MapBluePrint bluePrint,
 ) {
   try {
-    MapF.withArgs(bluePrint).match('', json);
+    MapF.of(bluePrint).match('', json);
     return true;
   } on BluePrintException {
     return false;
@@ -21,4 +21,4 @@ void matchOrThrow(
   Map<String, dynamic> json,
   MapBluePrint bluePrint,
 ) =>
-    MapF.withArgs(bluePrint).match('', json);
+    MapF.of(bluePrint).match('', json);

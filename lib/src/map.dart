@@ -1,7 +1,7 @@
 part of 'match.dart';
 
 extension MapArgsExt on _BluePrintFieldT<Map> {
-  _BPFWrapper withArgs(MapBluePrint bluePrint) => _BPFWrapper(
+  _BPFWrapper of(MapBluePrint bluePrint) => _BPFWrapper(
         (key, value) {
           /// * insure is Map
           if (value is! Map) {
@@ -26,7 +26,7 @@ extension MapArgsExt on _BluePrintFieldT<Map> {
 }
 
 extension MapOrNullArgsExt on _BluePrintFieldT<Map?> {
-  _BPFWrapper withArgs(MapBluePrint bluePrint) => _BPFWrapper(
+  _BPFWrapper of(MapBluePrint bluePrint) => _BPFWrapper(
         (key, value) {
           /// * insure is Map
           final isMap = value is Map;

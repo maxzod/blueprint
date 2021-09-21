@@ -40,7 +40,7 @@ void main() {
           final result = match(
             json,
             {
-              'user': MapF.withArgs({
+              'user': MapF.of({
                 'id': IntF,
                 'name': StringF,
                 'langs': ListF,
@@ -62,7 +62,7 @@ void main() {
           final result = match(
             json,
             {
-              'user': MapF.withArgs({
+              'user': MapF.of({
                 'id': IntF,
                 'name': StringF,
                 'langs': ListF,
@@ -76,7 +76,7 @@ void main() {
           final result = match(
             json,
             {
-              'user': MapF.withArgs({
+              'user': MapF.of({
                 'id': IntF,
                 'name': StringF,
                 'langs': ListF,
@@ -98,7 +98,7 @@ void main() {
           final result = match(
             json,
             {
-              'user': MapOrNull.withArgs({
+              'user': MapOrNull.of({
                 'id': IntF,
                 'name': StringF,
                 'langs': ListF,
@@ -118,7 +118,7 @@ void main() {
           final result = match(
             json,
             {
-              'user': MapOrNull.withArgs({
+              'user': MapOrNull.of({
                 'id': IntF,
                 'name': StringF,
                 'langs': ListF,
@@ -132,7 +132,7 @@ void main() {
           final result = match(
             json,
             {
-              'user': MapOrNull.withArgs({
+              'user': MapOrNull.of({
                 'id': IntF,
                 'name': StringF,
                 'langs': ListF,

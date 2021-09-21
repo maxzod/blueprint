@@ -1,18 +1,32 @@
 part of 'match.dart';
 
 extension ListExt on _BluePrintFieldT<List> {
-  _BPFWrapper withArgs(MapBluePrint bluePrint) => _BPFWrapper(
+  _BPFWrapper of(_BluePrintFieldT bpf) => _BPFWrapper(
         (key, value) {
           /// * insure is List
           if (value is! List) {
             throw TypeDoesNotMatch(key: key, value: value, expected: List);
           }
+          _validateInnerOfList(key, value, bpf);
         },
       );
-  _BPFWrapper offType<T>() => _BPFWrapper(
+}
+
+extension ListExtOrNull on _BluePrintFieldT<List?> {
+  _BPFWrapper of(_BluePrintFieldT bpf) => _BPFWrapper(
         (key, value) {
-          _offType<List>(key, value);
-          (value as List).map((e) => _offType<T>(key, e));
+          /// * insure is List
+          if (value is! List?) {
+            throw TypeDoesNotMatch(key: key, value: value, expected: List);
+          }
+          if (value == null) return;
+          _validateInnerOfList(key, value, bpf);
         },
       );
+}
+
+void _validateInnerOfList(String key, List value, _BluePrintFieldT bpf) {
+  for (final item in value) {
+    bpf.match(key, item);
+  }
 }

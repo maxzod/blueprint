@@ -7,7 +7,7 @@ Validate JSON Against Your Own Blueprint 👑🧬
 - validate json to match any schema you want 🌟
 - support dart native types 🔍
 - support for TypeOrNull
-- support for `.withArgs` for deeper and deeper validation 💪
+- support for `.of` for deeper and deeper validation 💪
 - throw or return false as a result 💣
 - Strong Types , also the blueprint is just a map but values must be a subtype of `_BluePrintFieldT` which is all of supported types null or not
 - tells you which key is a failure and why 💪
@@ -31,7 +31,7 @@ Validate JSON Against Your Own Blueprint 👑🧬
 2 - use `matchOrThrow` to throw the error in case of miss match
 3 - use `.WithArgs()` function on `Map` and `List` it is available on there four rules `MapF`,`MapOrNull`,`ListF` , `ListOrNull` to validate deer inside the object
 4 - in case of null value the nullable Field Rule will not validate against the args an consider it a match
-5 - in case of a value in the nullable Field Rule the `.withArgs()` function will validate against the args and return the result based on that
+5 - in case of a value in the nullable Field Rule the `.of()` function will validate against the args and return the result based on that
 
 # Examples
 
@@ -117,8 +117,8 @@ void main(List<String> arguments) {
       {
         'name': StringF,
         'age': IntF,
-        'args': ListF(MapF.withArgs({'foo': IntF})),
-        'passport': MapF.withArgs({
+        'args': ListF(MapF.of({'foo': IntF})),
+        'passport': MapF.of({
           'id': IntF,
           'type': StringF,
           'created_at': StringF,
