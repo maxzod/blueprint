@@ -1,7 +1,7 @@
-import 'package:json_blueprint/src/exceptions.dart';
+import 'exceptions.dart';
 
-part 'imp.dart';
 part 'basic_types.dart';
+part 'imp.dart';
 part 'list.dart';
 part 'map.dart';
 

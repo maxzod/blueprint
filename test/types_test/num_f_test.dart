@@ -1,4 +1,5 @@
-import 'package:json_blueprint/json_blueprint.dart';
+import 'package:blueprint/blueprint.dart';
+
 import 'package:test/test.dart';
 
 void main() {

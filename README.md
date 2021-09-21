@@ -2,6 +2,21 @@
 
 Validate JSON Against Your Own Blueprint 👑🧬
 
+- [Motivation](#motivation)
+- [Features](#features)
+- [supported types](#supported-types)
+- [Notes](#notes)
+- [Examples](#examples)
+  - [example 1](#example-1)
+  - [example 2](#example-2)
+  - [example 3](#example-3)
+
+# Motivation
+
+we use json almost every day in our job with null safety we can skip many errors but we cant test if the api still intact and the update does't break any thing in the data type or schema
+
+so we meade this package mostly you can use it for testing the apis you consume with dart or what you built with dart `palace` hope your day is less bugs with this package
+
 # Features
 
 - validate json to match any schema you want 🌟
@@ -28,9 +43,13 @@ Validate JSON Against Your Own Blueprint 👑🧬
 # Notes
 
 1 - use `match` to get true or false as result
+
 2 - use `matchOrThrow` to throw the error in case of miss match
-3 - use `.WithArgs()` function on `Map` and `List` it is available on there four rules `MapF`,`MapOrNull`,`ListF` , `ListOrNull` to validate deer inside the object
+
+3 - use `.of()` function on `Map` and `List` it is available on there four rules `MapF`,`MapOrNull`,`ListF` , `ListOrNull` to validate deer inside the object
+
 4 - in case of null value the nullable Field Rule will not validate against the args an consider it a match
+
 5 - in case of a value in the nullable Field Rule the `.of()` function will validate against the args and return the result based on that
 
 # Examples
@@ -38,7 +57,7 @@ Validate JSON Against Your Own Blueprint 👑🧬
 ## example 1
 
 ```dart
-import 'package:json_blueprint/json_blueprint.dart';
+import 'package:blueprint/blueprint.dart';
 
 void main(List<String> arguments) {
   //* use try/catch blocs to catch the failure message
@@ -63,7 +82,6 @@ void main(List<String> arguments) {
 ## example 2
 
 ```dart
-import 'package:json_blueprint/json_blueprint.dart';
 
 void main(List<String> arguments) {
   //* use try/catch blocs to catch the failure message
@@ -92,7 +110,6 @@ void main(List<String> arguments) {
 ## example 3
 
 ```dart
-import 'package:json_blueprint/json_blueprint.dart';
 
 void main(List<String> arguments) {
   //* use try/catch blocs to catch the failure message

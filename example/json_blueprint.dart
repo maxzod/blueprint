@@ -14,7 +14,7 @@
 //   }
 // }
 
-import 'package:json_blueprint/json_blueprint.dart';
+import 'package:blueprint/blueprint.dart';
 
 void main(List<String> args) {
   const json = {
