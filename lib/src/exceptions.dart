@@ -22,16 +22,3 @@ class TypeDoesNotMatch extends BluePrintException {
           msg: 'field $key is a ${value.runtimeType} expected to be $expected',
         );
 }
-
-class LengthDoesNotMatch extends BluePrintException {
-  LengthDoesNotMatch(
-      {required String key,
-      Object? value,
-      required int vLength,
-      required int expected})
-      : super(
-          key: key,
-          value: value,
-          msg: 'map $key keys length is $vLength expected to be $expected',
-        );
-}

@@ -7,7 +7,7 @@ void main() {
     () {
       test('when blueprint is valid List felid', () {
         const json = {'names': []};
-        final result = match(json, {'names': ListF()});
+        final result = match(json, {'names': ListF});
         expect(result, isTrue);
       });
       test(
@@ -16,18 +16,18 @@ void main() {
           const json = {
             'names': [[]],
           };
-          final result = match(json, {
-            'names': ListF(
-              ListF(),
-            )
-          });
-          expect(result, isTrue);
+          // final result = match(json, {
+          //   'names': ListF.withArgs(
+
+          //   )
+          // });
+          // expect(result, isTrue);
         },
       );
 
       test('when blueprint is **NOT** valid List felid', () {
         const json = {'name': 10112017};
-        final result = match(json, {'name': ListF()}, throwIfFail: false);
+        final result = match(json, {'name': ListF});
         expect(result, isFalse);
       });
     },

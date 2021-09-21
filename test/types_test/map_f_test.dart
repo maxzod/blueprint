@@ -2,35 +2,146 @@ import 'package:json_blueprint/json_blueprint.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group(
-    'MapF BluePrint',
-    () {
-      test('when blueprint is valid Map felid', () {
-        const json = {'name': {}};
-        final result = match(json, {'name': MapF()});
-        expect(result, isTrue);
-      });
-      test('when **INNER** map blueprint is valid Map felid', () {
-        const json = {
-          'name': {
-            'user': {},
-          }
-        };
-        final result = match(json, {
-          'name': MapF(
-            {
-              'user': MapF(),
-            },
-          )
-        });
-        expect(result, isTrue);
-      });
+  group('MapF BluePrint group ', () {
+    test('when is Map with MapF return true', () {
+      const json = {'name': {}};
+      final result = match(json, {'name': MapF});
+      expect(result, isTrue);
+    });
 
-      test('when blueprint is **NOT** valid Map felid', () {
-        const json = {'name': 10112017};
-        final result = match(json, {'name': MapF()}, throwIfFail: false);
-        expect(result, isFalse);
-      });
-    },
-  );
+    test('when null with MapF return false', () {
+      const json = <String, dynamic>{};
+      final result = match(json, {'name': MapF});
+      expect(result, isFalse);
+    });
+    test('when is Map with MapOrNull return true', () {
+      const json = {'name': {}};
+      final result = match(json, {'name': MapOrNull});
+      expect(result, isTrue);
+    });
+
+    test('when null with MapOrNull return true', () {
+      const json = <String, dynamic>{};
+      final result = match(json, {'name': MapOrNull});
+      expect(result, isTrue);
+    });
+
+    group(
+      'validate against map args',
+      () {
+        test('when is Map with MapF with valid args return true', () {
+          const json = {
+            'user': {
+              'id': -0,
+              'name': 'ahmed masoud',
+              'langs': ['MD 😀', 'Java', 'javaScript', 'dart', 'php']
+            }
+          };
+          final result = match(
+            json,
+            {
+              'user': MapF.withArgs({
+                'id': IntF,
+                'name': StringF,
+                'langs': ListF,
+              })
+            },
+          );
+          expect(result, isTrue);
+        });
+
+        test('when is Map with MapF with **NOT** valid args return false', () {
+          const json = {
+            'user': {
+              /// *  `string` not `int`
+              'id': '-0',
+              'name': 'ahmed masoud',
+              'langs': ['MD 😀', 'Java', 'javaScript', 'dart', 'php']
+            }
+          };
+          final result = match(
+            json,
+            {
+              'user': MapF.withArgs({
+                'id': IntF,
+                'name': StringF,
+                'langs': ListF,
+              })
+            },
+          );
+          expect(result, isFalse);
+        });
+        test('when is null with MapF with valid args return false', () {
+          const json = <String, dynamic>{};
+          final result = match(
+            json,
+            {
+              'user': MapF.withArgs({
+                'id': IntF,
+                'name': StringF,
+                'langs': ListF,
+              })
+            },
+          );
+          expect(result, isFalse);
+        });
+        test('when is Map with MapOrNull with **NOT** valid args return false',
+            () {
+          const json = {
+            'user': {
+              /// *  `string` not `int`
+              'id': '-0',
+              'name': 'ahmed masoud',
+              'langs': ['MD 😀', 'Java', 'javaScript', 'dart', 'php']
+            }
+          };
+          final result = match(
+            json,
+            {
+              'user': MapOrNull.withArgs({
+                'id': IntF,
+                'name': StringF,
+                'langs': ListF,
+              })
+            },
+          );
+          expect(result, isFalse);
+        });
+        test('when is Map with MapOrNull with valid args return true', () {
+          const json = {
+            'user': {
+              'id': -0,
+              'name': 'ahmed masoud',
+              'langs': ['MD 😀', 'Java', 'javaScript', 'dart', 'php']
+            }
+          };
+          final result = match(
+            json,
+            {
+              'user': MapOrNull.withArgs({
+                'id': IntF,
+                'name': StringF,
+                'langs': ListF,
+              })
+            },
+          );
+          expect(result, isTrue);
+        });
+        test('when is null with MapOrNull with valid args return true', () {
+          const json = <String, dynamic>{};
+          final result = match(
+            json,
+            {
+              'user': MapOrNull.withArgs({
+                'id': IntF,
+                'name': StringF,
+                'langs': ListF,
+              })
+            },
+          );
+          expect(result, isTrue);
+        });
+      },
+    );
+  });
 }
