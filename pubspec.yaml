@@ -1,5 +1,5 @@
 name: blueprint
-description: Validate JSON Against Your Own Blueprint
+description: Validate JSON Against Your Own Blueprint with support deep validation and null-able types with List and Map , detect the failure field
 version: 0.0.1-beta
 homepage: https://github.com/maxzod/blueprint
 environment:
