@@ -1,5 +1,6 @@
 part of 'match.dart';
 
+/// * to enable deeper types in the list
 extension ListExt on BluePrintFieldT<List> {
   /// * validate aginst `List` content
   BPFWrapper of(BluePrintField bpf) => BPFWrapper(
@@ -13,6 +14,7 @@ extension ListExt on BluePrintFieldT<List> {
       );
 }
 
+/// * to enable deeper types in the list or null
 extension ListExtOrNull on BluePrintFieldT<List?> {
   BPFWrapper of(BluePrintField bpf) => BPFWrapper(
         (key, value) {

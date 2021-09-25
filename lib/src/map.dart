@@ -1,5 +1,6 @@
 part of 'match.dart';
 
+/// * to enable deeper types in the map
 extension MapArgsExt on BluePrintFieldT<Map> {
   BPFWrapper of(MapBluePrint bluePrint) => BPFWrapper(
         (key, value) {
@@ -12,6 +13,7 @@ extension MapArgsExt on BluePrintFieldT<Map> {
       );
 }
 
+/// * to enable deeper types in the map with null
 extension MapOrNullArgsExt on BluePrintFieldT<Map?> {
   BPFWrapper of(MapBluePrint bluePrint) => BPFWrapper(
         (key, value) {
@@ -27,6 +29,7 @@ extension MapOrNullArgsExt on BluePrintFieldT<Map?> {
       );
 }
 
+/// validate the inner map content
 void _validateMapContent(String key, Map value, MapBluePrint bpf) {
   /// * check keys values
   try {

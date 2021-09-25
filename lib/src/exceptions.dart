@@ -1,4 +1,5 @@
 /// exception base class
+/// exception base class
 class BluePrintException implements Exception {
   final String key;
   final Object? value;
