@@ -25,7 +25,7 @@ void main(List<String> args) {
       ),
     ),
   };
-  final bool r = matchMap(json, schema);
+  final bool r = matchMap(json, schema, throwable: true);
   print(r);
   // OR use try catch blocks to  get the failiure message
   try {
