@@ -2,7 +2,7 @@
 
 Validate JSON Against Your Own Blueprint 👑🧬
 
-#![example](https://github.com/maxzod/lighthouse/blob/master/images/example.png)
+#![example](https://github.com/maxzod/blueprint/blob/master/images/example.png)
 
 - [Motivation](#motivation)
 - [NOTE](#note)
