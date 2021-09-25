@@ -1,9 +1,13 @@
 `PART OF` **`QUEEN`** 👑
 
-Validate JSON Against Your Own Blueprint 👑🧬
+# **Validate JSON Against Your Own Blueprint 👑🧬**
 
-#![example](https://github.com/maxzod/blueprint/blob/master/images/example.png)
+![example](https://github.com/maxzod/blueprint/blob/master/images/example.png)
 
+# Content
+
+- [**Validate JSON Against Your Own Blueprint 👑🧬**](#validate-json-against-your-own-blueprint-)
+- [Content](#content)
 - [Motivation](#motivation)
 - [NOTE](#note)
 - [Features](#features)
