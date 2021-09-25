@@ -25,11 +25,11 @@ void main(List<String> args) {
       ),
     ),
   };
-  final bool r = match(json, schema);
+  final bool r = matchMap(json, schema);
   print(r);
   // OR use try catch blocks to  get the failiure message
   try {
-    matchOrThrow(json, schema);
+    matchMap(json, schema, throwable: true);
   } on TypeDoesNotMatch catch (e) {
     print(e.msg); // field [posts][user][age] is a String expected to be int
 

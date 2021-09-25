@@ -6,24 +6,24 @@ void main() {
   group('MapF BluePrint group ', () {
     test('when is Map with MapF return true', () {
       const json = {'name': {}};
-      final result = match(json, {'name': MapF});
+      final result = matchMap(json, {'name': MapF});
       expect(result, isTrue);
     });
 
     test('when null with MapF return false', () {
       const json = <String, dynamic>{};
-      final result = match(json, {'name': MapF});
+      final result = matchMap(json, {'name': MapF});
       expect(result, isFalse);
     });
     test('when is Map with MapOrNull return true', () {
       const json = {'name': {}};
-      final result = match(json, {'name': MapOrNull});
+      final result = matchMap(json, {'name': MapOrNull});
       expect(result, isTrue);
     });
 
     test('when null with MapOrNull return true', () {
       const json = <String, dynamic>{};
-      final result = match(json, {'name': MapOrNull});
+      final result = matchMap(json, {'name': MapOrNull});
       expect(result, isTrue);
     });
 
@@ -38,7 +38,7 @@ void main() {
               'langs': ['MD 😀', 'Java', 'javaScript', 'dart', 'php']
             }
           };
-          final result = match(
+          final result = matchMap(
             json,
             {
               'user': MapF.of({
@@ -60,7 +60,7 @@ void main() {
               'langs': ['MD 😀', 'Java', 'javaScript', 'dart', 'php']
             }
           };
-          final result = match(
+          final result = matchMap(
             json,
             {
               'user': MapF.of({
@@ -74,7 +74,7 @@ void main() {
         });
         test('when is null with MapF with valid args return false', () {
           const json = <String, dynamic>{};
-          final result = match(
+          final result = matchMap(
             json,
             {
               'user': MapF.of({
@@ -96,7 +96,7 @@ void main() {
               'langs': ['MD 😀', 'Java', 'javaScript', 'dart', 'php']
             }
           };
-          final result = match(
+          final result = matchMap(
             json,
             {
               'user': MapOrNull.of({
@@ -116,7 +116,7 @@ void main() {
               'langs': ['MD 😀', 'Java', 'javaScript', 'dart', 'php']
             }
           };
-          final result = match(
+          final result = matchMap(
             json,
             {
               'user': MapOrNull.of({
@@ -130,7 +130,7 @@ void main() {
         });
         test('when is null with MapOrNull with valid args return true', () {
           const json = <String, dynamic>{};
-          final result = match(
+          final result = matchMap(
             json,
             {
               'user': MapOrNull.of({

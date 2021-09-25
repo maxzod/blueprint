@@ -5,12 +5,12 @@ import 'package:test/test.dart';
 void main() {
   test('when is List with ListF return true', () {
     const json = {'names': []};
-    final result = match(json, {'names': ListF});
+    final result = matchMap(json, {'names': ListF});
     expect(result, isTrue);
   });
   test('when is null with ListF return false', () {
     const json = {'names': null};
-    final result = match(json, {'names': ListF});
+    final result = matchMap(json, {'names': ListF});
     expect(result, isFalse);
   });
 
@@ -18,7 +18,7 @@ void main() {
     'when List is empty with ListF.of return true',
     () {
       const json = {'names': []};
-      final result = match(json, {'names': ListF.of(IntF)});
+      final result = matchMap(json, {'names': ListF.of(IntF)});
       expect(result, isTrue);
     },
   );
@@ -29,7 +29,7 @@ void main() {
       const json = {
         'names': [1, 2, 3]
       };
-      final result = match(json, {'names': ListF.of(IntF)});
+      final result = matchMap(json, {'names': ListF.of(IntF)});
       expect(result, isTrue);
     },
   );
@@ -39,7 +39,7 @@ void main() {
       const json = {
         'names': [1, 2, 3]
       };
-      final result = match(json, {'names': ListF.of(StringF)});
+      final result = matchMap(json, {'names': ListF.of(StringF)});
       expect(result, isFalse);
     },
   );
@@ -68,7 +68,7 @@ void main() {
           }
         ]
       };
-      final result = match(
+      final result = matchMap(
         json,
         {
           'posts': ListF.of(

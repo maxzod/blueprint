@@ -20,14 +20,19 @@
 
 # Motivation
 
-we use json almost every day in our job with null safety we can skip many errors but we cant test if the api still intact and the update does't break any thing in the data type or schema
+we use json almost every day in our job with null safety we can skip many errors but we cant test if the api still intact after each update,
 
-so we meade this package mostly you can use it for testing the apis you consume with dart or what you built with dart `palace` hope your day is less bugs with this package
+and the update does't break any thing in the data type or schema
+
+so we meade this package mostly you can use it for testing the apis you consume with dart or what you built with dart
+we could use some help if you are interested in server side dart at `palace` project
+hope your day is bug-less with this package 💙
 
 # NOTE
 
-this package depends on dart `>= 2.13.0` if you want to use it with flutter you have to update to flutter >= 2.5
-the reason is the
+this package depends on dart `>= 2.13.0` if you want to use it with flutter
+
+you have to update to `flutter >= 2.5`
 
 # Features
 
@@ -36,7 +41,7 @@ the reason is the
 - support for TypeOrNull
 - support for `.of` for deeper and deeper validation 💪
 - throw or return false as a result 💣
-- Strong Types , also the blueprint is just a map but values must be a subtype of `_BluePrintFieldT` which is all of supported types null or not
+- Strong Types , also the blueprint is just a map but values must be a subtype of `BluePrintField` which is all of supported types null or not
 - tells you which key is a failure and why 💪
 - tested 🧪
 
@@ -54,9 +59,9 @@ the reason is the
 
 # Notes
 
-1 - use `match` to get true or false as result
+1 - use `matchMap` Or `matchF` to get true or false as result
 
-2 - use `matchOrThrow` to throw the error in case of miss match
+2 - set the `throwable` parameter to true to throw the error in case of miss match
 
 3 - use `.of()` function on `Map` and `List` it is available on there four rules `MapF`,`MapOrNull`,`ListF` , `ListOrNull` to validate deer inside the object
 
@@ -75,12 +80,14 @@ void main(List<String> arguments) {
   //* use try/catch blocs to catch the failure message
   try {
     // simple one felid
-    matchOrThrow(
+    matchMap(
       // the json
       {'name': 'queen'},
       // the blue print
       {'name': String},
       // * you can use supported Felids only , they are listen in the readme.md file
+     throwable:true,
+
     );
     print('[👑][blue_print] match result is ✅');
   } catch (e) {
@@ -100,7 +107,7 @@ void main(List<String> arguments) {
   try {
 
     // ? validate against lists
-    matchOrThrow(
+    matchMap(
       {
         'ids': [10, 11, 17]
       },
@@ -109,6 +116,8 @@ void main(List<String> arguments) {
         // ? or you can determine the list items type
         // 'ids' : ListF(IntF()),
       },
+      throwable:true,
+
     );
     print('[👑][blue_print] match result is ✅');
   } catch (e) {
@@ -128,7 +137,7 @@ void main(List<String> arguments) {
   try {
 
     // * full example
-    match(
+    matchMap(
       {
         'name': 'ahmed',
         'age': 25,
@@ -153,6 +162,7 @@ void main(List<String> arguments) {
           'created_at': StringF,
         })
       },
+      throwable:true,
     );
     print('[👑][blue_print] match result is ✅');
   } catch (e) {

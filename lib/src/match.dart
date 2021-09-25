@@ -7,24 +7,31 @@ part 'map.dart';
 
 /// * match the json with the bluePrint
 /// * return true in case of success
-/// * return false in case of failure
-bool match(
+/// ! throw `TypeDoesNotMatch` in case of failure or return false based on throwable paramter
+bool matchMap(
   Map<String, dynamic> json,
-  MapBluePrint bluePrint,
-) {
+  MapBluePrint bluePrint, {
+  bool throwable = false,
+}) {
   try {
     MapF.of(bluePrint).match('', json);
     return true;
   } on BluePrintException {
+    if (throwable) rethrow;
     return false;
   }
 }
 
-/// * match the json with the bluePrint
-/// ? return void in case of success
-/// ! throw `TypeDoesNotMatch` in case of failure
-void matchOrThrow(
+bool matchF(
   Map<String, dynamic> json,
-  MapBluePrint bluePrint,
-) =>
-    MapF.of(bluePrint).match('', json);
+  BluePrintField bluePrint, {
+  bool throwable = false,
+}) {
+  try {
+    bluePrint.match('', json);
+    return true;
+  } on BluePrintException {
+    if (throwable) rethrow;
+    return false;
+  }
+}

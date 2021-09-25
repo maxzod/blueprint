@@ -8,14 +8,21 @@ void main() {
       () {
     const json = {'isAdmin': 'Foo'};
     expect(
-      () => matchOrThrow(json, {'isAdmin': BoolF}),
+      () => matchMap(
+        json,
+        {'isAdmin': BoolF},
+        throwable: true,
+      ),
       throwsA(isA<TypeDoesNotMatch>()),
     );
   });
 
-  test('when blueprint is **NOT** valid and use match()', () {
+  test('when blueprint is **NOT** valid and use matchMap()', () {
     const json = {'isAdmin': 'Foo'};
-    final result = match(json, {'isAdmin': BoolF});
+    final result = matchMap(
+      json,
+      {'isAdmin': BoolF},
+    );
     expect(result, isFalse);
   });
   test(
@@ -23,7 +30,11 @@ void main() {
     () {
       const json = {'isAdmin': 'Foo'};
       expect(
-        () => matchOrThrow(json, {'isAdmin': BoolF}),
+        () => matchMap(
+          json,
+          {'isAdmin': BoolF},
+          throwable: true,
+        ),
         throwsException,
       );
     },
