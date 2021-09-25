@@ -2,7 +2,10 @@
 
 Validate JSON Against Your Own Blueprint 👑🧬
 
+#![example](https://github.com/maxzod/lighthouse/blob/master/images/example.png)
+
 - [Motivation](#motivation)
+- [NOTE](#note)
 - [Features](#features)
 - [supported types](#supported-types)
 - [Notes](#notes)
@@ -16,6 +19,11 @@ Validate JSON Against Your Own Blueprint 👑🧬
 we use json almost every day in our job with null safety we can skip many errors but we cant test if the api still intact and the update does't break any thing in the data type or schema
 
 so we meade this package mostly you can use it for testing the apis you consume with dart or what you built with dart `palace` hope your day is less bugs with this package
+
+# NOTE
+
+this package depends on dart `>= 2.13.0` if you want to use it with flutter you have to update to flutter >= 2.5
+the reason is the
 
 # Features
 

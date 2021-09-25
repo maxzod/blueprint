@@ -1,8 +1,8 @@
 part of 'match.dart';
 
-extension ListExt on _BluePrintFieldT<List> {
+extension ListExt on BluePrintFieldT<List> {
   /// * validate aginst `List` content
-  _BPFWrapper of(_BluePrintFieldT bpf) => _BPFWrapper(
+  BPFWrapper of(BluePrintField bpf) => BPFWrapper(
         (key, value) {
           /// * insure is List
           _offType<List>(key, value);
@@ -13,8 +13,8 @@ extension ListExt on _BluePrintFieldT<List> {
       );
 }
 
-extension ListExtOrNull on _BluePrintFieldT<List?> {
-  _BPFWrapper of(_BluePrintFieldT bpf) => _BPFWrapper(
+extension ListExtOrNull on BluePrintFieldT<List?> {
+  BPFWrapper of(BluePrintField bpf) => BPFWrapper(
         (key, value) {
           /// * insure is List
           _offType<List?>(key, value);
@@ -29,7 +29,7 @@ extension ListExtOrNull on _BluePrintFieldT<List?> {
 }
 
 /// * loop throw the List content and validate
-void _validateInnerOfList(String key, List value, _BluePrintFieldT bpf) {
+void _validateInnerOfList(String key, List value, BluePrintField bpf) {
   for (final item in value) {
     bpf.match(
       key,

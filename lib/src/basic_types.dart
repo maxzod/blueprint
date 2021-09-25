@@ -3,29 +3,29 @@
 part of 'match.dart';
 
 /// * String || String?
-const StringF = _BluePrintFieldT<String>();
-const StringOrNull = _BluePrintFieldT<String?>();
+const StringF = BluePrintFieldT<String>();
+const StringOrNull = BluePrintFieldT<String?>();
 
 /// * int || int?
-const IntF = _BluePrintFieldT<int>();
-const IntOrNull = _BluePrintFieldT<int?>();
+const IntF = BluePrintFieldT<int>();
+const IntOrNull = BluePrintFieldT<int?>();
 
 /// * double || double?
-const DoubleF = _BluePrintFieldT<double>();
-const DoubleOrNull = _BluePrintFieldT<double?>();
+const DoubleF = BluePrintFieldT<double>();
+const DoubleOrNull = BluePrintFieldT<double?>();
 
 /// * num || num?
-const NumF = _BluePrintFieldT<num>();
-const NumOrNull = _BluePrintFieldT<num?>();
+const NumF = BluePrintFieldT<num>();
+const NumOrNull = BluePrintFieldT<num?>();
 
 /// * bool || bool?
-const BoolF = _BluePrintFieldT<bool>();
-const BoolOrNull = _BluePrintFieldT<bool?>();
+const BoolF = BluePrintFieldT<bool>();
+const BoolOrNull = BluePrintFieldT<bool?>();
 
 /// * Map || Map?
-const MapF = _BluePrintFieldT<Map>();
-const MapOrNull = _BluePrintFieldT<Map?>();
+const MapF = BluePrintFieldT<Map>();
+const MapOrNull = BluePrintFieldT<Map?>();
 
 /// * List || List?
-const ListF = _BluePrintFieldT<List>();
-const ListOrNull = _BluePrintFieldT<List?>();
+const ListF = BluePrintFieldT<List>();
+const ListOrNull = BluePrintFieldT<List?>();

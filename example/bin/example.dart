@@ -1,19 +1,3 @@
-// import 'package:json_blueprint/json_blueprint.dart';
-
-// void main(List<String> arguments) {
-//   //* use try/catch blocs to catch the failure message
-//   try {
-//     match(
-//       {'foo': 'bar'},
-//       {'foo': BoolF},
-//     );
-//     print('[👑][blue_print] match result is ✅');
-//   } catch (e) {
-//     print(e.runtimeType);
-//     print('[👑][blue_print] match result is ❌');
-//   }
-// }
-
 import 'package:blueprint/blueprint.dart';
 
 void main(List<String> args) {
@@ -22,40 +6,32 @@ void main(List<String> args) {
       {
         'id': 1,
         'text': '',
-        'user': {
-          'id': 0,
-          'age': 21,
-          'avatar': '',
-        }
-      },
-      {
-        'id': 2,
-        'text': '',
-        'user': {
-          'id': 0,
-          'age': 21,
-          'avatar': '',
-        }
+        'user': {'id': 0, 'age': '21', 'avatar': ''}
       }
     ]
   };
-  final r = match(
-    json,
-    {
-      'posts': ListF.of(
-        MapF.of(
-          {
+  final schema = {
+    'posts': ListF.of(
+      MapF.of(
+        {
+          'id': IntF,
+          'text': StringF,
+          'user': MapF.of({
             'id': IntF,
-            'text': StringF,
-            'user': MapF.of({
-              'id': IntF,
-              'age': IntF,
-              'avatar': StringF,
-            })
-          },
-        ),
+            'age': IntF,
+            'avatar': StringF,
+          })
+        },
       ),
-    },
-  );
+    ),
+  };
+  final bool r = match(json, schema);
   print(r);
+  // OR use try catch blocks to  get the failiure message
+  try {
+    matchOrThrow(json, schema);
+  } on TypeDoesNotMatch catch (e) {
+    print(e.msg); // field [posts][user][age] is a String expected to be int
+
+  }
 }

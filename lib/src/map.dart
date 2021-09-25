@@ -1,7 +1,7 @@
 part of 'match.dart';
 
-extension MapArgsExt on _BluePrintFieldT<Map> {
-  _BPFWrapper of(MapBluePrint bluePrint) => _BPFWrapper(
+extension MapArgsExt on BluePrintFieldT<Map> {
+  BPFWrapper of(MapBluePrint bluePrint) => BPFWrapper(
         (key, value) {
           /// * insure is Map
           _offType<Map>(key, value);
@@ -12,8 +12,8 @@ extension MapArgsExt on _BluePrintFieldT<Map> {
       );
 }
 
-extension MapOrNullArgsExt on _BluePrintFieldT<Map?> {
-  _BPFWrapper of(MapBluePrint bluePrint) => _BPFWrapper(
+extension MapOrNullArgsExt on BluePrintFieldT<Map?> {
+  BPFWrapper of(MapBluePrint bluePrint) => BPFWrapper(
         (key, value) {
           /// * insure is Map?
           _offType<Map?>(key, value);
