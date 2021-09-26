@@ -9,7 +9,7 @@ part 'map.dart';
 /// * return true in case of success
 /// ! throw `TypeDoesNotMatch` in case of failure or return false based on throwable paramter
 bool matchMap(
-  Map<String, dynamic> json,
+  Object json,
   MapBluePrint bluePrint, {
   bool throwable = false,
 }) {
@@ -23,7 +23,7 @@ bool matchMap(
 }
 
 bool matchF(
-  Map<String, dynamic> json,
+  Object json,
   BluePrintField bluePrint, {
   bool throwable = false,
 }) {
